@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="js/jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      function Person() { }
+      var $person = new Person();
+      $person.name = "小明";
+      console.log($person.name);
+      //操纵属性节点
+      var span = document.getElementsByTagName("span")[0];
+      span.setAttribute("name","777");
+      console.log(span.getAttribute("name"));
+
+      //操作属性节点2个方法
+      // attr()获取设置属性节点的值
+      //参数1时候,获取属性节点值
+      //参数2时候设置属性节点值
+      // console.log($("span").attr("class")) //返回第一个元素指定的节点值
+      // console.log($("span").attr("class","box")) //找到多少个设置多少个节点值,如果不存在属性节点,则新增
+      //
+      // //removeAttr 删除所有元素属性节点,删除多个时候空格隔离
+      // $("span").removeAttr("class name")
+
+      //精确设置属性节点值
+      console.log($("span").eq(0).prop("demo","hello"));
+      //checked,selected,disabled 使用用prop,其他attr
+      console.log($("input").prop("checked")); //true false
+      console.log($("input").attr("checked")); //checked undefined
+
+    });
+  </script>
+</head>
+<body>
+<!--<span name="666">在标签里面添加属性就是属性节点</span>-->
+<span class="span2" name="aa"></span>
+<span class="span3" name="bb"></span>
+<input type="checkbox" name="" id="" >
+
+<input type="text" id="text">
+<input type="button" value="输入地址切换图片" id="btn"><br/>
+<img src="./11.jpg" alt="" srcset="">
+</body>
+</html>
+<script>
+  //切换图片练习
+  var btn = document.getElementById("btn")
+  btn.onclick = function () {
+    var input = document.getElementById("text");
+    var text = input.value;
+    $("img").attr("src",text)
+  }
+</script>

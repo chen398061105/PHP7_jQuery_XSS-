@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .father{
+      width: 200px;
+      height: 200px;
+      background: red;
+    }
+    .son{
+      width: 100px;
+      height: 100px;
+      background: blue;
+    }
+  </style>
+</head>
+  <script src="js/jquery-1.12.4.js"></script>
+  <script>
+      $(function () {
+        //eventName(fn),效率高点,部分jquey没有的事件不支持
+        //传的是函数的话,可以剥离函数 直接封装
+        function test(){
+          alert(1);
+        }
+        function test2(){
+          alert(12222);
+        }
+        //调用时候如果加括号了,立即执行
+        $("#btn1").click(test);
+        $("#btn1").click(test2);
+
+        //on(eventName,fn),动态绑定 ,支持所有
+        $("#btn2").on("click",function () {
+          alert(2);
+        });
+        //无参 :删除所有事件
+        // $("#btn1").off();
+        //删除指定的事件
+        // $("#btn1").off("click");
+        //删除指定事件.指定内容
+        $("#btn1").off("click",test2)
+
+        //事件冒泡
+        //子->父->祖宗
+        $(".son").click(function (event) {
+            alert("son");
+            //阻止冒泡 方法1
+            // return false;
+
+            //阻止冒泡 方法2
+            event.stopPropagation();
+        });
+        //自动触发事件,绑定该事件名
+        $(".father").click(function () {
+          alert("father");
+        });
+        //注意:trigger会触发事件冒泡,triggerHandler只会触发自己的事件
+        // $(".father").trigger("click");
+        // $(".father").triggerHandler("click");
+
+       /* //默认事件
+        $("a").click(function (event) {
+          alert("注册");
+          //阻止默认行为1
+          // return false;
+
+          //阻止默认行为2
+          event.preventDefault();
+        });
+*/
+        $("input[type='submit']").click(function () {
+          alert("submit")
+        });
+        //注意:trigger会触发事件默认,triggerHandler只会触发自己的事件
+        // $("input[type='submit']").triggerHandler('click');
+
+        //特殊标签 a,a标签里面加个元素,才会触发默认事件
+        // $("span").click(function () {
+        //   alert(1111);
+        // })
+        // $("span").trigger("click");
+
+        //自定义事件
+        //事件必须是on绑定,事件必须通过trigger触发
+          $("#btn3").on("myClick",function () {
+            alert("自定义按钮")
+          });
+          $("#btn3").trigger("myClick")
+      });
+  </script>
+<body>
+<button id="btn1">我是按钮1</button>
+<button id="btn2">我是按钮2</button>
+<button id="btn3">自定义</button>
+
+<div class="father">
+  <div class="son"></div>
+</div>
+<a href="http://www.baidu.com"><span>baidu注册</span></a>
+<form action="http://www.taobao.com">
+  <input type="text">
+  <input type="submit">
+</form>
+<a href="#" style="color: red">aa</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="js/jquery-1.12.4.js"></script>
+  <script>
+    //放弃$符号使用,自定义一个,必须放在首部
+    // $mm = jQuery.noConflict();
+    var oo = jQuery.noConflict();
+    oo(function () {
+      alert(1);
+    })
+  </script>
+</head>
+<body>
+<img src="./index.jpg" alt="">
+</body>
+</html>

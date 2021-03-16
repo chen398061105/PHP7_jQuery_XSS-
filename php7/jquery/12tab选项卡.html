@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 440px;
+      height: 298px;
+      border: 1px solid #000;
+      margin: 50px auto;
+    }
+
+    .nav > li {
+      list-style: none;
+      width: 110px;
+      height: 50px;
+      background: orange;
+      text-align: center;
+      line-height: 50px;
+      float: left;
+    }
+
+    .nav > .current {
+      background: #ccc;
+    }
+
+    .content > li {
+      list-style: none;
+      display: none;
+    }
+
+    .content > .show {
+      display: block;
+    }
+  </style>
+</head>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    /*
+      $(".nav>li").hover(function () {
+          $(this).addClass("current");
+          //找到每个坐标
+          var $index = $(this).index();
+          //根据索引找到对应图片
+          var $li = $(".content>li").eq($index)
+          //显示
+          $li.addClass("show")
+          //
+      },function () {
+        $(this).removeClass("current")
+        //找到每个坐标
+        var $index = $(this).index();
+        //根据索引找到对应图片
+        var $li = $(".content>li").eq($index)
+        //显示
+        $li.removeClass("show")
+      })
+     */
+    $(".nav>li").mouseenter(function () {
+      //1 添加背景图
+      $(this).addClass("current").siblings().removeClass("current");
+      // siblings()可以选择非当前的其他值
+      //移出其他选项背景图
+      // $(this).siblings().removeClass("current");
+
+      //开始找出对应的图片索引
+      var $index = $(this).index();
+      var $li = $(".content>li").eq($index);
+      //隐藏其他图片
+      // $li.siblings().removeClass("show");
+      //显示当前图片
+      $li.addClass("show").siblings().removeClass("show");
+    });
+  });
+</script>
+<body>
+<div class="box">
+  <ul class="nav">
+    <li class="current">H5+C3</li>
+    <li>jQuery</li>
+    <li>C语言</li>
+    <li>Go语言</li>
+  </ul>
+  <ul class="content">
+    <li class="show"><img src="images/11.jpg" alt=""></li>
+    <li><img src="images/12.jpg" alt=""></li>
+    <li><img src="images/13.jpg" alt=""></li>
+    <li><img src="images/14.jpg" alt=""></li>
+  </ul>
+</div>
+</body>
+</html>

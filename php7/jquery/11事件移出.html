@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .father {
+      width: 200px;
+      height: 200px;
+      background: red;
+    }
+
+    .son {
+      width: 100px;
+      height: 100px;
+      background: blue;
+    }
+  </style>
+</head>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    //如果有子元素时候也会触发父元素事件
+    // $(".father").mouseover(function () {
+    //   console.log("father被移入了");
+    // });
+    // $(".father").mouseout(function () {
+    //   console.log("father被移出了");
+    // });
+
+    //推荐这个方法,子元素不会影响
+    // $(".father").mouseenter(function () {
+    //   console.log("father被移入了");
+    // });
+    // $(".father").mouseleave(function () {
+    //   console.log("father被移出了");
+    // });
+
+    //这个可以同时监听,2个参数都是fun 1是移入 2是移出
+    // $(".father").hover(function () {
+    //   console.log("father被移入了");
+    // },function () {
+    //   console.log("father被移出了");
+    // });
+
+    //如果只有一个参数func时候 ,2个功能都有
+    $(".father").hover(function () {
+      console.log("father被移入移出了");
+    });
+  });
+</script>
+<body>
+<div class="father">father
+  <div class="son">son</div>
+</div>
+</body>
+</html>

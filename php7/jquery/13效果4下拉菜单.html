@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>44-下拉菜单</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav {
+      list-style: none;
+      width: 300px;
+      height: 50px;
+      background: red;
+      margin: 100px auto;
+    }
+
+    .nav > li {
+      width: 100px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      float: left;
+    }
+
+    .sub {
+      list-style: none;
+      background: mediumpurple;
+      display: none;
+    }
+  </style>
+  <script src="js/jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+        $(".nav>li").hover(function () {
+      // 在jQuery中如果需要执行动画, 建议在执行动画之前先调用stop方法,然后再执行动画
+          //移出移入
+      //     $(this).children(".sub").stop().slideToggle(1000);
+          //淡入淡出
+          $(this).children(".sub").stop().fadeToggle(2000);
+          // fadeTo(速度,指定到程度,func)
+        });
+    });
+  </script>
+</head>
+<body>
+<ul class="nav">
+  <li>一级菜单
+    <ul class="sub">
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+    </ul>
+  </li>
+  <li>一级菜单
+    <ul class="sub">
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+    </ul>
+  </li>
+  <li>一级菜单
+    <ul class="sub">
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+      <li>二级菜单</li>
+    </ul>
+  </li>
+
+
+
+</ul>
+</body>
+</html>

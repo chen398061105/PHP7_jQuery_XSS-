@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>50-无限循环滚动</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 600px;
+      height: 161px;
+      border: 1px solid #000;
+      margin: 100px auto;
+      overflow: hidden;
+    }
+
+    ul {
+      list-style: none;
+      width: 1800px;
+      height: 161px;
+      background: #000;
+    }
+
+    ul > li {
+      float: left;
+    }
+  </style>
+  <script src="js/jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //开启定时器
+      var offset = 0; //偏移位
+      var timer;
+
+      function autoPlay() {
+        timer = setInterval(function () {
+          offset += -10;
+          //为了无违和感的轮播
+          if (offset <= -1200) {
+            offset = 0;
+          }
+          $("ul").css("marginLeft", offset)
+        }, 100);
+      }
+
+      //2 监听li的移入移出事件
+      $("li").hover(function () {
+        //停止滚动
+        clearInterval(timer);
+        //选中当前图片时候,其他图片加蒙版,自己的还原
+        $(this).siblings().fadeTo(100,0.5);
+        $(this).fadeTo(100,1);
+      }, function () {
+        //继续滚动
+        autoPlay();
+        $("li").fadeTo(100,1);
+      });
+      //开关效果
+      $("button").eq(0).click(function () {
+        clearInterval(timer);
+        autoPlay();
+      });
+      $("button").eq(1).click(function () {
+        clearInterval(timer);
+      });
+    });
+  </script>
+</head>
+<body>
+<button>开</button>
+<button>关</button>
+<div>
+  <ul>
+    <li><img src="images/a.jpg" alt=""></li>
+    <li><img src="images/b.jpg" alt=""></li>
+    <li><img src="images/c.jpg" alt=""></li>
+    <li><img src="images/d.jpg" alt=""></li>
+    <li><img src="images/a.jpg" alt=""></li>
+    <li><img src="images/b.jpg" alt=""></li>
+  </ul>
+</div>
+</body>
+</html>

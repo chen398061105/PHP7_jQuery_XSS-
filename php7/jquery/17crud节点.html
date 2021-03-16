@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    $("button").eq(0).click(function () {
+      //创建节点
+      var li = $("<li>新增的节点</li>");
+      // $("ul").append(li);//会添加到内部的最后/prepend()最前面
+      // $li.appendTo("ul") 和上面一样,写法不一样而已;
+
+      //外部插入
+      $("ul").after(li);//会添加到外部的最后/before最前面
+    });
+    //删除
+    $("button").eq(1).click(function () {
+      // $("div").remove()//全部删掉
+      $("div").empty()//只删除内部的,保留自身
+    });
+    //替换
+    $("button").eq(2).click(function () {
+      var $new = $("<p>new hello</p>");
+      // $("span").replaceWith($new);//替换所有匹配的span元素
+      $new.replaceAll("span");//
+    });
+
+    //浅复制节点 clone(false)
+    $("button").eq(3).click(function () {
+      var li = $("li:first").clone(false);
+      $("ul").append(li);
+    });
+    //深复制节点clone(true)
+    $("button").eq(4).click(function () {
+      var li = $("li:first").clone(true);
+      $("ul").append(li);
+    });
+    //深复制能复制元素的事件,浅复制只能复制元素
+    $("li").click(function () {
+      alert($(this).html())
+    })
+
+  });
+</script>
+<body>
+<button>添加节点</button>
+<button>删除节点</button>
+<button>替换节点</button>
+<button>浅复制节点</button>
+<button>深复制节点</button>
+<!--ul>li{我是第$个节点}*3-->
+<ul>
+  <li>我是第1个节点</li>
+  <li>我是第2个节点</li>
+  <li>我是第3个节点</li>
+</ul>
+<div>
+  <span>hello</span>
+</div>
+</body>
+</html>

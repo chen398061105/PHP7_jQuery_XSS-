@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="js/jquery-1.12.4.js"></script>
+  <script>
+    //源生js
+    window.onload =function(){
+      var img = document.getElementsByTagName("img")[0];
+      var width = window.getComputedStyle(img).width;
+      console.log('js:',width);
+    };
+    //jquery
+    $(document).ready(function () {
+      var $img = $("img");
+      var $width = $img.width();
+      console.log("jquery",$width);
+    })
+    /**
+     * 源生js 后面的会覆盖前面的 ,jquery不会覆盖
+     *
+     */
+  </script>
+</head>
+<body>
+<img src="./index.jpg" alt="">
+</body>
+</html>

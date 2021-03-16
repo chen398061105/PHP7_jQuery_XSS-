@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+  <script src="js/jquery-1.12.4.js"></script>
+  <script>
+      $(function () {
+       //事件委托
+        //如果通过核心函数找的的元素不止一个时候,会自动遍历,并给遍历到的元素添加事件
+
+        // $("ul>li").click(function () {
+        //   console.log($(this).html());;
+        // });
+        //但是通过入口函数时候,li是3个已经确定了,所以不能添加事件,
+        //可以通过事件委托方法
+        //li的事件通过click,委托给ul做(本质就是通过冒泡委托的)
+        $("ul").delegate("li","click",function () {
+          console.log($(this).html());;
+        });
+
+        $("button").click(function () {
+          $("ul").append("<li>这是新增事件</li>")
+        })
+      });
+  </script>
+<body>
+<ul>
+  <li>这是第1个事件</li>
+  <li>这是第2个事件</li>
+  <li>这是第3个事件</li>
+</ul>
+<button>新增事件</button>
+</body>
+</html>

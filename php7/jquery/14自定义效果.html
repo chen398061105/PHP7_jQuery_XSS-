@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .two {
+      background: blue;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      margin-top: 10px;
+      background: red;
+    }
+  </style>
+</head>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    $("button").eq(0).click(function () {
+      //参数1 obj,参数2 速度,参数3状态,参数4func
+      $(".one").animate({
+        marginLeft: 500,
+      }, 5000, "linear", function () {//linear 块慢块
+        alert("动画执行完毕");
+      });
+      //不写状态默认匀速
+      $(".two").animate({
+        width: 100,
+      }, 5000, function () {
+        // alert("动画执行完毕");
+      });
+    });
+    //连续操作
+    $("button").eq(1).click(function () {
+      $(".two").animate({
+        width: "+=100",
+      }, 1000, function () {
+        // alert("动画执行完毕");
+      });
+    });
+    $("button").eq(2).click(function () {
+      $(".two").animate({
+        // width: "hide", 已知的效果关键字
+        width: "toggle",
+      }, 1000, function () {
+        // alert("动画执行完毕");
+      });
+    });
+    // delay 延迟操作
+    $("button").eq(3).click(function () {
+      $(".two").animate({width: 500}, 2000).delay(2000).animate({height: 500}, 3000)
+    });
+    //stop 有参数时候
+    $("button").eq(4).click(function () {
+      $(".two").stop(true);//停止所有动画
+      /**
+       * stop(),stop(false)stop(false,false),立即停止当前,执行后面的
+       * stop(true)stop(true,false),立即停止所有
+       * stop(false,true),立即完成当前,继续后面
+       * stop(true,true),立即完成当前,停止后面
+       */
+    });
+  });
+</script>
+<body>
+<button>操作属性</button>
+<button>累加属性</button>
+<button>关键字</button>
+<button>延缓2秒再动</button>
+<button>stop</button>
+<div class="one"></div>
+<div class="two"></div>
+</body>
+</html>

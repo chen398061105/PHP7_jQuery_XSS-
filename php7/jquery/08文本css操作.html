@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+   div{
+     width: 100px;
+     height: 100px;
+     border: solid 1px black;
+   }
+  </style>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+          var btns = document.getElementsByTagName("button");
+          // html添加类,和js的innerHtml一样,html
+          btns[0].onclick = function () {
+            $("div").html("<p>hello</p>")
+          };
+          btns[1].onclick = function () {
+            console.log($("div").html());
+          };
+
+          // text() 文本
+          btns[2].onclick = function () {
+            $("div").text("<p>hello</p>")
+          };
+          btns[3].onclick = function () {
+            console.log($("div").text());
+          };
+
+          // val()
+          btns[4].onclick = function () {
+            $("input").val("请输入内容")
+          };
+          btns[5].onclick = function () {
+            console.log($("input").val());
+          };
+          //逐个
+          btns[6].onclick = function () {
+            $("div").css("width","200px")
+          };
+          //建议不超过3个css
+          btns[7].onclick = function () {
+            $("div").css("width","200px").css("height","200px")
+          };
+          //批量修改 ..推荐
+          btns[8].onclick = function () {
+            $("div").css({
+              width:"200px",
+              height:"200px",
+              background:"red"
+            });
+          };
+
+          //获取样式
+          console.log($("div").css("width"));
+        });
+    </script>
+</head>
+<body>
+<button>设置html</button>
+<button>获取html</button>
+<button>设置text</button>
+<button>获取text</button>
+<button>设置value</button>
+<button>获取value</button>
+<button>逐个设置css样式</button>
+<button>链式设置css样式</button>
+<button>批量设置css样式</button>
+<div></div>
+<input type="text" value="">
+
+</body>
+</html>

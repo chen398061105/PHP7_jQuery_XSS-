@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+   .father{
+     width: 200px;
+     height: 200px;
+     border: solid 1px black;
+     background: red;
+     margin-left: 50px;
+     position: relative;
+   }
+    .son{
+      width: 100px;
+      height: 100px;
+      border: solid 1px black;
+      background: blue;
+      top: 50px;
+      left: 50px;
+      position: absolute;
+    }
+  </style>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+         var btns = document.getElementsByTagName("button");
+         btns[0].onclick = function () {
+           console.log($(".father").width());//获取宽
+           $(".father").width("500px");//设置宽
+         };
+         // position()获取定位元素的距离,但是不能设置
+          btns[1].onclick = function () {
+            console.log($(".son").offset().left);//获取距离左边窗口的距离
+            $(".son").offset({//设置
+              left:10
+            });
+          }
+        });
+    </script>
+</head>
+<body>
+<button>获取+设置宽</button>
+<button>设置</button>
+<div class="father">
+  <div class="son"></div>
+</div>
+</body>
+</html>

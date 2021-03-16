@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="js/jquery-1.12.4.js"></script>
+  <script>
+    //jquery入口写法 1
+    $(document).ready(function () {
+     alert(1);
+    });
+    //jquery入口写法 2  推荐
+    $(function () {
+      alert(2);
+    });
+    //jquery入口写法 3
+    jQuery(document).ready(function () {
+      alert(3);
+    });
+    //jquery入口写法 4
+    jQuery(function () {
+      alert(4);
+    })
+  </script>
+</head>
+<body>
+<img src="./index.jpg" alt="">
+</body>
+</html>
